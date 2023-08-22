@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Aldesk.MainPage">
+
+	<Grid ColumnDefinitions="*,*">
+
+		<ScrollView Grid.Column="0">
+			<VerticalStackLayout Padding="10" Spacing="20">
+				<HorizontalStackLayout Spacing="10">
+					<Label Text="IP:" VerticalTextAlignment="Center" />
+					<Entry x:Name="entry_ip" Text="{Binding IpAdress}" Placeholder="Target or yours" />
+				</HorizontalStackLayout>
+
+				<HorizontalStackLayout Spacing="10">
+					<Label Text="Port:" VerticalTextAlignment="Center" />
+					<Entry x:Name="entry_port" Text="{Binding ConnectionPort}" Placeholder="Target or yours" />
+				</HorizontalStackLayout>
+
+				<HorizontalStackLayout Spacing="10">
+					<Label Text="Message:" />
+					<Editor x:Name="editor_message" Text="{Binding Message}" Placeholder="Your message box" MinimumWidthRequest="400" MinimumHeightRequest="200" />
+				</HorizontalStackLayout>
+
+				<HorizontalStackLayout Spacing="10">
+					<Button x:Name="button_listen" Text="Listen" Clicked="button_listen_Clicked" WidthRequest="100" />
+					<Ellipse Fill="Green" IsVisible="{Binding Listening}" WidthRequest="30" HeightRequest="30" />
+				</HorizontalStackLayout>
+
+				<HorizontalStackLayout Spacing="10">
+					<Button x:Name="button_connect" Text="Connect" Clicked="button_connect_Clicked" WidthRequest="100" />
+					<Ellipse Fill="Green" IsVisible="{Binding Connecting}" WidthRequest="30" HeightRequest="30" />
+				</HorizontalStackLayout>
+
+				<HorizontalStackLayout Spacing="10">
+					<Button x:Name="button_send" Text="Send" Clicked="button_send_Clicked" WidthRequest="100" />
+					<Ellipse Fill="Green" IsVisible="{Binding Sending}" WidthRequest="30" HeightRequest="30" />
+				</HorizontalStackLayout>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+		<StackLayout Grid.Column="1">
+			<Label Text="Logs" FontSize="20" />
+			<ListView ItemsSource="{Binding DebugLogList}" VerticalOptions="FillAndExpand" />
+		</StackLayout>
+	</Grid>
+
+
+</ContentPage>
